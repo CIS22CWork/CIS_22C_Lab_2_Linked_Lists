@@ -12,8 +12,6 @@ Stack
 template <class T>
 class Stack : public List<T>
 {
-private:
-	int itemCount = 0;
 public:
 
 	bool pop(T anEntry)
