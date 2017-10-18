@@ -22,7 +22,7 @@ using namespace std;
 
 int main()
 {
-	ListInterface<string> nodeList;
+	Stack<string> nodeList;
 	string buffer;
 	ifstream read_input_file("Words.txt");
 

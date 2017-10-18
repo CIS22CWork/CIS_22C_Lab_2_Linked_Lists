@@ -10,7 +10,7 @@ Stack
 */
 
 template <class T>
-class ListInterface : public NumberList<T>
+class Stack : public List<T>
 {
 private:
 	int itemCount = 0;
@@ -34,11 +34,11 @@ public:
 	return True if addition was successful, or false if not. */
 	bool add(T newEntry)
 	{
-		ListNode<T> *newNode;
-		ListNode<T> *currentNode;
+		Node<T> *newNode;
+		Node<T> *currentNode;
 		bool returnStatus = true;
 
-		newNode = new ListNode<T>(newEntry);
+		newNode = new Node<T>(newEntry);
 
 		itemCount++;
 		if (isEmpty())
@@ -66,8 +66,8 @@ public:
 	return  True if removal was successful, or false if not.*/
 	bool remove(T anEntry)
 	{
-		ListNode<T> *currentNode;
-		ListNode<T> *prevNode;
+		Node<T> *currentNode;
+		Node<T> *prevNode;
 
 		currentNode = tail;
 		prevNode = currentNode;
@@ -122,7 +122,7 @@ public:
 	return  True if list contains anEntry, or false otherwise. */
 	bool contains(T anEntry)
 	{
-		ListNode<T> *currentNode;
+		Node<T> *currentNode;
 
 		currentNode = tail;
 
@@ -144,7 +144,7 @@ public:
 	void displayList()
 	{
 		itemCount = 0;
-		ListNode<T> *currPtr = tail;
+		Node<T> *currPtr = tail;
 		while (currPtr != nullptr)
 		{
 

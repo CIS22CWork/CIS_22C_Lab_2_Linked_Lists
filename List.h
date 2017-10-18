@@ -10,14 +10,14 @@ List
 */
 
 template <class T>
-class NumberList
+class List
 {
 protected:
-	ListNode<T> *head;
-	ListNode<T> *tail;
+	Node<T> *head;
+	Node<T> *tail;
 public:
 	//Constructor
-	NumberList()
+	List()
 	{
 		head = nullptr;
 		tail = nullptr;
@@ -32,10 +32,10 @@ public:
 	//Destructor
 	/*Removes all entries from this list.
 	post  List contains no items, and the count of items is 0. */
-	~NumberList()
+	~List()
 	{
-		ListNode<T> *currentNode;
-		ListNode<T> *nextNode;
+		Node<T> *currentNode;
+		Node<T> *nextNode;
 
 		currentNode = head;
 

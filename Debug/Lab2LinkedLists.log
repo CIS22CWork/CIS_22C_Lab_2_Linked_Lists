@@ -1,12 +1,4 @@
 ﻿  main.cpp
 c:\users\user1\desktop\git\lab2linkedlists\main.cpp(39): warning C4551: function call missing argument list
-  CurrencyYuan.cpp
-  CurrencyYen.cpp
-  CurrencyRupee.cpp
-  CurrencyEuro.cpp
-  CurrencyDollar.cpp
-  currency.cpp
-c:\users\user1\desktop\git\lab2linkedlists\currency.cpp(51): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
-  Generating Code...
   Lab2LinkedLists.vcxproj -> C:\Users\user1\Desktop\GIT\Lab2LinkedLists\Debug\Lab2LinkedLists.exe
   Lab2LinkedLists.vcxproj -> C:\Users\user1\Desktop\GIT\Lab2LinkedLists\Debug\Lab2LinkedLists.pdb (Partial PDB)

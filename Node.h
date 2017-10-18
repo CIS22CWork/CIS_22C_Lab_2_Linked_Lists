@@ -10,13 +10,13 @@ Node
 */
 
 template <class T>
-class ListNode
+class Node
 {
 public:
 	T value;
-	ListNode<T> *next;
+	Node<T> *next;
 
-	ListNode(T nodeValue)
+	Node(T nodeValue)
 	{
 		value = nodeValue;
 		next = nullptr;
