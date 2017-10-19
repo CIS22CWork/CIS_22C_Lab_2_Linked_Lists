@@ -10,5 +10,6 @@ private:
 public:
 	CurrencyYen(int initWhole, int initFractional);
 	void setUp();
+	~CurrencyYen();
 };
 #endif

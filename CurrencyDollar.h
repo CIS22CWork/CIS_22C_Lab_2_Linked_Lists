@@ -10,5 +10,6 @@ private:
 public:
 	CurrencyDollar (int initWhole, int initFractional);
 	void setUp();
+	~CurrencyDollar();
 };
 #endif

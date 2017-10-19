@@ -10,6 +10,14 @@ CurrencyYen::CurrencyYen(int initWhole, int initFractional) : Currency(initWhole
 }
 
 //******************************************************
+// class destructor
+//******************************************************
+CurrencyYen::~CurrencyYen()
+{
+	//Example of polymorphism
+}
+
+//******************************************************
 // setUp             
 //
 // This is a demonstration of polymorphism.

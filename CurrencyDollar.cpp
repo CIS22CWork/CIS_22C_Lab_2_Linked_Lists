@@ -10,6 +10,14 @@ CurrencyDollar::CurrencyDollar (int initWhole, int initFractional) : Currency (i
 }
 
 //******************************************************
+// class destructor
+//******************************************************
+CurrencyDollar::~CurrencyDollar()
+{
+	//Example of polymorphism
+}
+
+//******************************************************
 // setUp             
 //
 // This is a demonstration of polymorphism.

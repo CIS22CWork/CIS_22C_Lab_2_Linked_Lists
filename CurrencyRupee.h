@@ -10,5 +10,6 @@ private:
 public:
 	CurrencyRupee(int initWhole, int initFractional);
 	void setUp();
+	~CurrencyRupee();
 };
 #endif

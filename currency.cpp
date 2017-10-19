@@ -159,3 +159,8 @@ ostream& operator<< (ostream &foo, Currency &cCurrency)
 		<< ", " << cCurrency.getFractional () << ", " << cCurrency.getFractionalName ();
 	return foo;
 }
+
+Currency::~Currency()
+{
+	//Serves as an example of polymorphism
+}

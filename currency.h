@@ -19,6 +19,7 @@ public:
 	void addDouble(double addAmount);
 	void addValue(int wholeAdd, int fractionalAdd);
 	virtual void setUp();
+	virtual ~Currency();
 
 	std::string getWholeName();
 	int Currency::getWhole();

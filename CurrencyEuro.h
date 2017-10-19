@@ -10,5 +10,6 @@ private:
 public:
 	CurrencyEuro (int initWhole, int initFractional);
 	void setUp();
+	~CurrencyEuro();
 };
 #endif

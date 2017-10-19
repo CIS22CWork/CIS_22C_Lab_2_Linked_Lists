@@ -10,6 +10,14 @@ CurrencyRupee::CurrencyRupee(int initWhole, int initFractional) : Currency(initW
 }
 
 //******************************************************
+// class destructor
+//******************************************************
+CurrencyRupee::~CurrencyRupee()
+{
+	//Example of polymorphism
+}
+
+//******************************************************
 // setUp             
 //
 // This is a demonstration of polymorphism.

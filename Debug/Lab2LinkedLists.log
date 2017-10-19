@@ -1,4 +1,4 @@
-﻿  main.cpp
-c:\users\user1\desktop\git\lab2linkedlists\main.cpp(39): warning C4551: function call missing argument list
-  Lab2LinkedLists.vcxproj -> C:\Users\user1\Desktop\GIT\Lab2LinkedLists\Debug\Lab2LinkedLists.exe
-  Lab2LinkedLists.vcxproj -> C:\Users\user1\Desktop\GIT\Lab2LinkedLists\Debug\Lab2LinkedLists.pdb (Partial PDB)
+﻿  currency.cpp
+c:\users\asvle\onedrive\documents\github\lab2linkedlists\currency.cpp(51): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+  Lab2LinkedLists.vcxproj -> C:\Users\asvle\OneDrive\Documents\GitHub\Lab2LinkedLists\Debug\Lab2LinkedLists.exe
+  Lab2LinkedLists.vcxproj -> C:\Users\asvle\OneDrive\Documents\GitHub\Lab2LinkedLists\Debug\Lab2LinkedLists.pdb (Partial PDB)
