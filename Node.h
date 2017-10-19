@@ -9,6 +9,8 @@ Used Microsoft Visual Studio 2017
 Node
 */
 
+#ifndef NODE_H
+#define NODE_H
 template <class T>
 class Node
 {
@@ -16,9 +18,10 @@ public:
 	T value;
 	Node<T> *next;
 
-	Node(T nodeValue)
+	Node (T nodeValue)
 	{
 		value = nodeValue;
 		next = nullptr;
 	}
 };
+#endif

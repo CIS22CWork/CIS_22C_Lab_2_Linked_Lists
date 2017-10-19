@@ -1,4 +1,3 @@
-﻿  currency.cpp
-c:\users\asvle\onedrive\documents\github\lab2linkedlists\currency.cpp(51): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
-  Lab2LinkedLists.vcxproj -> C:\Users\asvle\OneDrive\Documents\GitHub\Lab2LinkedLists\Debug\Lab2LinkedLists.exe
-  Lab2LinkedLists.vcxproj -> C:\Users\asvle\OneDrive\Documents\GitHub\Lab2LinkedLists\Debug\Lab2LinkedLists.pdb (Partial PDB)
+﻿  CommandLineUI.cpp
+  Lab2LinkedLists.vcxproj -> F:\schoolCode\Lab2LinkedLists\Debug\Lab2LinkedLists.exe
+  Lab2LinkedLists.vcxproj -> F:\schoolCode\Lab2LinkedLists\Debug\Lab2LinkedLists.pdb (Partial PDB)

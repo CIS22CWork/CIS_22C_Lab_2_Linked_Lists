@@ -9,6 +9,15 @@ Used Microsoft Visual Studio 2017
 List
 */
 
+#ifndef LIST_H
+#define LIST_H
+#include "Node.h"
+
+/*
+To make an array have linked lists
+DynamicArray<LinkedList<int>> dynamicList
+That is a declaration, not a class!!!
+*/
 template <class T>
 class List
 {
@@ -18,7 +27,7 @@ protected:
 	int itemCount;
 public:
 	//Constructor
-	List()
+	List ()
 	{
 		head = nullptr;
 		tail = nullptr;
@@ -30,7 +39,7 @@ public:
 
 	/** Sees whether the list is empty.
 	@return True if the list is empty, or false if not. */
-	bool isEmpty()
+	bool isEmpty ()
 	{
 		if (!tail)
 		{
@@ -44,16 +53,16 @@ public:
 	the count of items in the list has increased by 1.
 	param newEntry The object to be added as a new entry.
 	return True if addition was successful, or false if not. */
-	bool add(T newEntry)
+	bool add (T newEntry)
 	{
 		Node<T> *newNode;
 		Node<T> *currentNode;
 		bool returnStatus = true;
 
-		newNode = new Node<T>(newEntry);
+		newNode = new Node<T> (newEntry);
 
 		itemCount++;
-		if (isEmpty())
+		if (isEmpty ())
 		{
 			tail = newNode;
 			head = tail;
@@ -76,7 +85,7 @@ public:
 	items in the list has decreased by 1.
 	param anEntry  The entry to be removed.
 	return  True if removal was successful, or false if not.*/
-	bool remove(T anEntry)
+	bool remove (T anEntry)
 	{
 		Node<T> *currentNode;
 		Node<T> *prevNode;
@@ -124,7 +133,7 @@ public:
 	/*Counts the number of times a given entry appears in list.
 	param anEntry  The entry to be counted.
 	return  The number of times anEntry appears in the list. */
-	int getFrequencyOf() const
+	int getFrequencyOf () const
 	{
 		return itemCount;
 	}
@@ -132,7 +141,7 @@ public:
 	/*Tests whether this list contains a given entry.
 	param anEntry  The entry to locate.
 	return  True if list contains anEntry, or false otherwise. */
-	bool contains(T anEntry)
+	bool contains (T anEntry)
 	{
 		Node<T> *currentNode;
 
@@ -156,7 +165,7 @@ public:
 	//Destructor
 	/*Removes all entries from this list.
 	post  List contains no items, and the count of items is 0. */
-	~List()
+	~List ()
 	{
 		Node<T> *currentNode;
 		Node<T> *nextNode;
@@ -174,3 +183,4 @@ public:
 		}
 	}
 };
+#endif

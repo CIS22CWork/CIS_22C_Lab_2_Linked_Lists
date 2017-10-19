@@ -9,25 +9,32 @@ Used Microsoft Visual Studio 2017
 Stack
 */
 
+#ifndef STACK_H
+#define STACK_H
+#include "List.h"
+
 template <class T>
 class Stack : public List<T>
 {
 public:
+	Stack ()
+	{
 
-	bool pop(T anEntry)
-	{
-		return remove(anEntry);
 	}
-	bool push(T newEntry)
+	bool pop (T anEntry)
 	{
-		return add(newEntry);
+		return remove (anEntry);
 	}
-	bool isempty()
+	bool push (T newEntry)
 	{
-		return isEmpty()
+		return add (newEntry);
+	}
+	bool isempty ()
+	{
+		return isEmpty ()
 	}
 	//To display the entire linked list
-	void displayList()
+	void displayList ()
 	{
 		itemCount = 0;
 		Node<T> *currPtr = tail;
@@ -42,3 +49,5 @@ public:
 
 	}
 };
+
+#endif
