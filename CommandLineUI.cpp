@@ -1,13 +1,14 @@
 /*
-Branden Lee and Stephen Lee
+Branden Lee, Stephen Lee, and Alex Morfin
 CIS 22C
 Fall 2017
-Lab 1
+Lab 2
 
 Used Microsoft Visual Studio 2017
 
 CommandLineUI class
 contains the presentational and interactive interface in the command line for the user.
+KEEP ALL COUT<< AND CIN>> HERE
 */
 
 #include <iostream>
@@ -126,7 +127,7 @@ void CommandLineUI::stringDemo ()
 		{
 			cout << "Your response " << itemName << " is here.\n";
 			cout << "Preparing to remove. Stand by..." << endl;
-			stackString->remove (itemName);
+			stackString->removeByValue (itemName);
 			cout << "Item Count is now " << stackString->getFrequencyOf () << " nodes." << endl;
 		}
 		else
@@ -135,8 +136,7 @@ void CommandLineUI::stringDemo ()
 		}
 
 	}
-	cin >> repeat_response;
-	cout << "All done!" << endl;
+	cout << "All done!" << endl << endl;
 }
 
 //******************************************************

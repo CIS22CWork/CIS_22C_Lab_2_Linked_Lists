@@ -7,6 +7,10 @@ Lab 2
 Used Microsoft Visual Studio 2017
 
 List
+A Singly Linked List ADT which will be composed of one or more nodes.
+Implement the most common linked-list behaviors as explained in class -
+new list, add anywhere, delete anywhere, find anywhere,
+count of items in the list, empty the list, etc.
 */
 
 #ifndef LIST_H
@@ -48,11 +52,15 @@ public:
 		return false;
 	}
 
-	/**Adds a new entry to the list.
-	post  If successful, newEntry is stored in the list and
-	the count of items in the list has increased by 1.
-	param newEntry The object to be added as a new entry.
-	return True if addition was successful, or false if not. */
+	//******************************************************
+	// add             
+	//
+	// posts to the end of the list. If successful, newEntry 
+	// is stored in the list and the count of items in the 
+	// list has increased by 1.
+	// param newEntry The object to be added as a new entry.
+	// return True if addition was successful, or false if not.    
+	//******************************************************
 	bool add (T newEntry)
 	{
 		Node<T> *newNode;
@@ -80,12 +88,78 @@ public:
 		return returnStatus;
 	}
 
-	/*Removes one occurrence of a given entry from this list, if possible.
-	post  If successful, anEntry has been removed from the list and the count of
-	items in the list has decreased by 1.
-	param anEntry  The entry to be removed.
-	return  True if removal was successful, or false if not.*/
-	bool remove (T anEntry)
+	//******************************************************
+	// removeByIndex           
+	//
+	// removes an entry at the defined index
+	// index 0=tail, SIZE-1=head 
+	// list count decremented by 1 if successful.
+	// returns true if addition was successful, or false if not.    
+	//******************************************************
+	bool removeByIndex (int indexRemove)
+	{
+		Node<T> *currentNode;
+		Node<T> *prevNode;
+		Node<T> *deletedNode;
+		bool returnStatus = false;
+
+		currentNode = tail;
+		prevNode = nullptr;
+		deletedNode = nullptr;
+
+		if (indexRemove >= 0 && indexRemove < itemCount)
+		{
+			// loop starts from tail and moves towards head.
+			for (int i = 0; i <= indexRemove; i++)
+			{
+				// found the index. lets remove it
+				if (i == indexRemove)
+				{
+					returnStatus = true;
+					deletedNode = currentNode;
+					if (i == 0)
+					{
+						// deleted the tail
+						if (itemCount > 0)
+						{
+							currentNode = currentNode->next;
+						}
+						tail = currentNode;
+					}
+					else if (i == itemCount - 1)
+					{
+						// deleted the head
+						prevNode->next = nullptr;
+						head = prevNode;
+					}
+					if (i > 0 && i < itemCount - 1)
+					{
+						// there is a previous and a next
+						prevNode->next = currentNode->next;
+					}
+					delete deletedNode;
+					itemCount--;
+				}
+				// next
+				prevNode = currentNode;
+				if (i < itemCount - 1)
+				{
+					currentNode = currentNode->next;
+				}
+			}
+		}
+		return returnStatus;
+	}
+
+
+	//******************************************************
+	// removeByValue          
+	//
+	// removes all entries with the same value
+	// list count decremented by 1 if successful.
+	// returns true if addition was successful, or false if not.    
+	//******************************************************
+	bool removeByValue (T anEntry)
 	{
 		Node<T> *currentNode;
 		Node<T> *prevNode;
@@ -162,9 +236,54 @@ public:
 		return false;
 	}
 
-	//Destructor
-	/*Removes all entries from this list.
-	post  List contains no items, and the count of items is 0. */
+	//******************************************************
+	// getCount           
+	//
+	// returns the list item count.
+	//******************************************************
+	int getCount ()
+	{
+		return itemCount;
+	}
+
+	//******************************************************
+	// getValue           
+	//
+	// returns the value of the list node index.
+	//******************************************************
+	T getValue (int indexGet)
+	{
+		Node<T> *currentNode;
+		T returnValue;
+
+		currentNode = tail;
+
+		if (indexGet >= 0 && indexGet < itemCount)
+		{
+			// loop starts from tail and moves towards head.
+			for (int i = 0; i <= indexGet; i++)
+			{
+				// found the index. lets get it.
+				if (i == indexGet)
+				{
+					returnValue = currentNode->value;
+				}
+				// next
+				if (i < itemCount - 1)
+				{
+					currentNode = currentNode->next;
+				}
+			}
+		}
+		return returnValue;
+	}
+
+	//******************************************************
+	// Destructor          
+	//
+	// Removes all entries from this list.
+	// post  List contains no items, and the count of items is 0.
+	//******************************************************
 	~List ()
 	{
 		Node<T> *currentNode;
@@ -175,11 +294,8 @@ public:
 		while (currentNode != nullptr)
 		{
 			nextNode = currentNode->next;
-
 			delete currentNode;
-
 			currentNode = nextNode;
-
 		}
 	}
 };
