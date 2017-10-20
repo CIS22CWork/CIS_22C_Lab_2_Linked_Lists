@@ -39,17 +39,19 @@ void CommandLineUI::enterLoop ()
 	{
 		cout << "Please enter the number representing the menu options below:" << endl
 			<< "1. Random integers in a linked list" << endl
-			<< "2. Open \"ExampleStrings.txt\" and examine strings." << endl
-			<< "3. Push a currency" << endl
-			<< "4. Pop a currency" << endl
-			<< "5. Empty currencys from the stack" << endl
-			<< "6. Exit Application" << endl << endl
+			<< "2. Empty integers from stack" << endl
+			<< "3. Open \"ExampleStrings.txt\" and examine strings." << endl
+			<< "4. Empty strings from stack" << endl
+			<< "5. Push a currency" << endl
+			<< "6. Pop a currency" << endl
+			<< "7. Empty currencys from the stack" << endl
+			<< "8. Exit Application" << endl << endl
 			<< "Selection Number: ";
 		// there is a bug that when you enter "test,2,3,hey" in the menu selection. 
 		// The program gets stuck in an infinite loop
 		cin >> menuOption;
 		cout << endl;
-		if (menuOption < 1 || menuOption > 6)
+		if (menuOption < 1 || menuOption > 8)
 		{
 			cout << "Your selection was not valid. Please try again. ";
 		}
@@ -57,50 +59,46 @@ void CommandLineUI::enterLoop ()
 		{
 			/* please keep each sub-menu in a separate function to increase readability and prevent
 			a huge blob of unorganized code. */
-			if (menuOption == 1)
-			{
-				intDemo ();
-			}
-			else if (menuOption == 2)
-			{
-				stringDemo ();
-			}
-			else if (menuOption == 3)
-			{
-				pushStack ();
-			}
-			else if (menuOption == 4)
-			{
-				popStack ();
-			}
-			else if (menuOption == 5)
-			{
-				emptyStack ();
-			}
-			else if (menuOption == 6)
-			{
-				loopActive = false;
-			}
+			if (menuOption == 1) intStackDemo ();
+			else if (menuOption == 2) intStackEmpty ();
+			else if (menuOption == 3) stringStackDemo ();
+			else if (menuOption == 4) stringStackEmpty ();
+			else if (menuOption == 5) currencyStackPush ();
+			else if (menuOption == 6) currencyStackPop ();
+			else if (menuOption == 7) currencyStackEmpty ();
+			else if (menuOption == 8) loopActive = false;
 		}
 	}
 }
 
 //******************************************************
-// intDemo    
+// intStackDemo   
 //      
 // This is an example of the method documentation
 //******************************************************
-void CommandLineUI::intDemo ()
+void CommandLineUI::intStackDemo ()
 {
-
+	int intRandom = rand () % 99999;
+	stackInt->push (intRandom);
+	cout << stackInt << endl << endl;
 }
 
 //******************************************************
-// stringDemo     
+// intStackEmpty        
+//      
+//******************************************************
+void CommandLineUI::intStackEmpty ()
+{
+	stackInt->empty ();
+	cout << stackInt << endl << endl;
+}
+
+//******************************************************
+// stringStackDemo     
 //      
 // This is an example of the method documentation
 //******************************************************
-void CommandLineUI::stringDemo ()
+void CommandLineUI::stringStackDemo ()
 {
 	string buffer;
 	ifstream read_input_file ("ExampleStrings.txt");
@@ -113,7 +111,7 @@ void CommandLineUI::stringDemo ()
 	{
 		read_input_file >> buffer;
 		if (!read_input_file) break;
-		stackString->add (buffer);
+		stackString->push (buffer);
 	}
 	cout << "Do you want to display the list?" << endl;
 	cin >> response;
@@ -144,11 +142,21 @@ void CommandLineUI::stringDemo ()
 }
 
 //******************************************************
-// pushStack       
+// stringStackEmpty     
+//      
+//******************************************************
+void CommandLineUI::stringStackEmpty ()
+{
+	stackString->empty ();
+	cout << stackString << endl << endl;
+}
+
+//******************************************************
+// currencyStackPush      
 //      
 // This is an example of the method documentation
 //******************************************************
-void CommandLineUI::pushStack ()
+void CommandLineUI::currencyStackPush ()
 {
 	// randomly generates a derived currency class class and fills it with
 	// money 0-100 whole and 0-99 fractional parts then pushes it onto the stack
@@ -162,22 +170,23 @@ void CommandLineUI::pushStack ()
 }
 
 //******************************************************
-// popStack         
+// currencyStackPop         
 //      
 //******************************************************
-void CommandLineUI::popStack ()
+void CommandLineUI::currencyStackPop ()
 {
 	stackCurrency->pop ();
 	cout << stackCurrency << endl << endl;
 }
 
 //******************************************************
-// emptyStack          
+// currencyStackEmpty      
 //      
 //******************************************************
-void CommandLineUI::emptyStack ()
+void CommandLineUI::currencyStackEmpty ()
 {
-
+	stackCurrency->empty ();
+	cout << stackCurrency << endl << endl;
 }
 
 //******************************************************

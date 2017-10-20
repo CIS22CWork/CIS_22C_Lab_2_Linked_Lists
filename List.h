@@ -204,17 +204,25 @@ public:
 		return returnStatus;
 	}
 
-	/*Counts the number of times a given entry appears in list.
-	param anEntry  The entry to be counted.
-	return  The number of times anEntry appears in the list. */
+	//******************************************************
+	// getFrequencyOf         
+	//
+	// Counts the number of times a given entry appears in list.
+	// param anEntry  The entry to be counted.
+	// return  The number of times anEntry appears in the list.
+	//******************************************************
 	int getFrequencyOf () const
 	{
 		return itemCount;
 	}
 
-	/*Tests whether this list contains a given entry.
-	param anEntry  The entry to locate.
-	return  True if list contains anEntry, or false otherwise. */
+	//******************************************************
+	// contains           
+	//
+	// Tests whether this list contains a given entry.
+	// param anEntry  The entry to locate.
+	// return  True if list contains anEntry, or false otherwise.
+	//******************************************************
 	bool contains (T anEntry)
 	{
 		Node<T> *currentNode;
@@ -276,6 +284,51 @@ public:
 			}
 		}
 		return returnValue;
+	}
+
+	//******************************************************
+	// empty          
+	//
+	// returns the value of the list node index.
+	//******************************************************
+	bool empty ()
+	{
+		Node<T> *currentNode;
+		Node<T> *prevNode;
+		bool returnStatus = false;
+
+		currentNode = tail;
+		prevNode = nullptr;
+
+		if (0 < itemCount)
+		{
+			// loop starts from tail and moves towards head.
+			for (int i = 0; i < itemCount; i++)
+			{
+				prevNode = currentNode;
+				if (i == 0)
+				{
+					// delete first
+					tail = nullptr;
+				}
+				else if (i < itemCount - 1)
+				{
+					// next
+					currentNode = currentNode->next;
+					prevNode->next = nullptr;
+					delete prevNode;
+				}
+				else
+				{
+					// delete last
+					head = nullptr;
+					returnStatus = true;
+					//delete currentNode;
+				}
+			}
+			itemCount = 0;
+		}
+		return returnStatus;
 	}
 
 	//******************************************************
