@@ -298,5 +298,16 @@ public:
 			currentNode = nextNode;
 		}
 	}
+
+	//******************************************************
+	// operator<<        
+	//******************************************************
+	template <class T>
+	friend std::ostream& operator<< (std::ostream &foo, List<T> *ListPtr);
+
+	Node<T>* getTail ()
+	{
+		return tail;
+	}
 };
 #endif

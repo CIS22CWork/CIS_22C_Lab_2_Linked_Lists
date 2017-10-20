@@ -13,7 +13,11 @@ KEEP ALL COUT<< AND CIN>> HERE
 
 #include <iostream>
 #include <fstream>
+#include <stdlib.h>     /* srand, rand */
+#include <time.h>       /* time */
+
 #include "commandLineUI.h"
+#include "List.h"
 
 using namespace std;
 
@@ -115,7 +119,7 @@ void CommandLineUI::stringDemo ()
 	cin >> response;
 	if (response == "Yes" || response == "yes")
 	{
-		stackString->displayList ();
+		cout << stackString;
 	}
 	cout << "Do you want to remove an item?" << endl;
 	cin >> response;
@@ -146,7 +150,15 @@ void CommandLineUI::stringDemo ()
 //******************************************************
 void CommandLineUI::pushStack ()
 {
-
+	// randomly generates a derived currency class class and fills it with
+	// money 0-100 whole and 0-99 fractional parts then pushes it onto the stack
+	int intRandom = rand () % 4;
+	if (intRandom == 0) stackCurrency->push (CurrencyDollar (rand () % 100, rand () % 99));
+	else if (intRandom == 1) stackCurrency->push (CurrencyEuro (rand () % 100, rand () % 99));
+	else if (intRandom == 2) stackCurrency->push (CurrencyRupee (rand () % 100, rand () % 99));
+	else if (intRandom == 3) stackCurrency->push (CurrencyYen (rand () % 100, rand () % 99));
+	else if (intRandom == 4) stackCurrency->push (CurrencyYuan (rand () % 100, rand () % 99));
+	cout << stackCurrency << endl << endl;
 }
 
 //******************************************************
@@ -155,7 +167,8 @@ void CommandLineUI::pushStack ()
 //******************************************************
 void CommandLineUI::popStack ()
 {
-
+	stackCurrency->pop ();
+	cout << stackCurrency << endl << endl;
 }
 
 //******************************************************
@@ -165,4 +178,23 @@ void CommandLineUI::popStack ()
 void CommandLineUI::emptyStack ()
 {
 
+}
+
+//******************************************************
+// operator<<        
+//******************************************************
+template <class T>
+std::ostream& operator<< (std::ostream &foo, List<T> *ListPtr)
+{
+	// Since operator<< is a friend of the List class, we can access
+	// it's members directly.
+	int itemCount = 0;
+	Node<T> *currPtr = ListPtr->getTail ();
+	while (currPtr != nullptr)
+	{
+		itemCount++;
+		foo << itemCount << ". " << currPtr->value << endl;
+		currPtr = currPtr->next;
+	}
+	return foo;
 }

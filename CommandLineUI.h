@@ -1,6 +1,11 @@
 #include <sstream>
 #include <limits>
 #include "Currency.h"
+#include "CurrencyDollar.h"
+#include "CurrencyEuro.h"
+#include "CurrencyRupee.h"
+#include "CurrencyYen.h"
+#include "CurrencyYuan.h"
 #include "Stack.h"
 
 class CommandLineUI

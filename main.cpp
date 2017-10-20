@@ -11,6 +11,8 @@ main
 
 #include <iostream>
 #include <string>
+#include <stdlib.h>     /* srand, rand */
+#include <time.h>       /* time */
 
 #include "Stack.h"
 #include "Currency.h"
@@ -20,6 +22,8 @@ using namespace std;
 
 int main ()
 {
+	/* initialize random seed: */
+	srand (time (NULL));
 	Stack<int> stackInt;
 	Stack<string> stackString;
 	Stack<Currency> stackCurrency;

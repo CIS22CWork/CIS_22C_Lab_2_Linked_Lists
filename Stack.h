@@ -74,23 +74,6 @@ public:
 	{
 		return getValue(getCount () - 1);
 	}
-
-
-	//To display the entire linked list
-	void displayList ()
-	{
-		itemCount = 0;
-		Node<T> *currPtr = tail;
-		while (currPtr != nullptr)
-		{
-
-			itemCount++;
-			cout << "Node " << "value ";
-			cout << "itemCount " << itemCount << "= " << currPtr->value << endl;
-			currPtr = currPtr->next;
-		}
-
-	}
 };
 
 #endif
