@@ -175,8 +175,17 @@ void CommandLineUI::currencyStackPush ()
 //******************************************************
 void CommandLineUI::currencyStackPop ()
 {
-	stackCurrency->pop ();
-	cout << stackCurrency << endl << endl;
+	if (stackCurrency->isEmpty())
+	{
+		cout << "************************************" << endl;
+		cout << "Stack is empty! Underflow Condition!" << endl;
+		cout << "************************************" << endl << endl;
+	}
+	else
+	{
+		stackCurrency->pop();
+		cout << stackCurrency << endl << endl;
+	}
 }
 
 //******************************************************
