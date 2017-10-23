@@ -48,7 +48,7 @@ void Currency::addInt (int addAmount)
 // meant to be used by operator overloading
 void Currency::addDouble (double addAmount)
 {
-	whole += addAmount;
+	whole += static_cast<int>(addAmount);
 	fractional += static_cast<int>(addAmount * fractionalPerWhole) % fractionalPerWhole;
 	if (fractional >= fractionalPerWhole)
 	{
