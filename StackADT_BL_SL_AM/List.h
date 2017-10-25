@@ -263,8 +263,8 @@ public:
 
 		if (!empty())
 		{
-			currentNode = head;
-			while (currentNode)
+			currentNode = tail;
+			while (currentNode != nullptr)
 			{
 				nextNode = currentNode->next;
 				deletedNode = currentNode;
