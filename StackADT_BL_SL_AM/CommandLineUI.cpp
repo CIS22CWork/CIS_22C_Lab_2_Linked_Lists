@@ -90,6 +90,11 @@ void CommandLineUI::enterLoop ()
 //******************************************************
 void CommandLineUI::intStackPush ()
 {
+	for (int i=0;i<10000;i++)
+	{
+		int intRandom = rand () % 99999;
+		stackInt->push (intRandom);
+	}
 	int intRandom = rand () % 99999;
 	stackInt->push (intRandom);
 	cout << "integer stack items:" << endl << stackInt << endl << endl;
@@ -143,6 +148,7 @@ void CommandLineUI::stringStackPush ()
 		if (!read_input_file) break;
 		stackString->push (buffer);
 	}
+	read_input_file.close ();
 	cout << "string stack items:" << endl << stackString << endl << endl;
 }
 
