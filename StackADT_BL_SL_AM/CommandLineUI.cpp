@@ -92,8 +92,6 @@ void CommandLineUI::intStackPush ()
 {
 	int intRandom = rand () % 99999;
 	stackInt->push (intRandom);
-	int intRandom = rand () % 99999;
-	stackInt->push (intRandom);
 	cout << "integer stack items:" << endl << stackInt << endl << endl;
 }
 

@@ -88,6 +88,46 @@ public:
 		return returnStatus;
 	}
 	//******************************************************
+	// insert       
+	//
+	// The container is extended by inserting new elements 
+	// before the element at the specified position.
+	// This effectively increases the list size by the
+	// amount of elements inserted.
+	//******************************************************
+	bool insert (int position, T val)
+	{
+		Node<T> *newNode;
+		Node<T> *currentNode;
+		Node<T> *prevNode;
+		bool returnStatus = false;
+		unsigned int i;
+
+		newNode = new Node<T> (newEntry);
+		currentNode = tail;
+
+		if (position <= 0 && position <= itemCount - 1)
+		{
+			for (i=0;i<=position;i++)
+			{
+				if (i==position)
+				{
+					returnStatus = true;
+					if (i != 0) prevNode->next = newNode;
+					else tail = newNode;
+					if (i != itemCount - 1) newNode->next = currentNode;
+					else head = newNode;
+				}
+				else
+				{
+					prevNode = currentNode;
+					currentNode = currentNode->next;
+				}
+			}
+		}
+		return returnStatus;
+	}
+	//******************************************************
 	// erase          
 	//
 	// removes an entry at the defined index
