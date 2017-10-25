@@ -29,7 +29,7 @@ private:
 	Node<T> *head;
 	Node<T> *tail;
 	int itemCount;
-protected:
+public:
 	//******************************************************
 	// empty        
 	//

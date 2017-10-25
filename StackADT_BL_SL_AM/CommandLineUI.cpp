@@ -248,3 +248,22 @@ std::ostream& operator<< (std::ostream &foo, List<T> *ListPtr)
 	}
 	return foo;
 }
+template <class T>
+std::ostream& operator<< (std::ostream &foo, Stack<T> *ListPtr)
+{
+	// Since operator<< is a friend of the List class, we can access
+	// it's members directly.
+	int itemCount = 0;
+	if (ListPtr->empty()) cout << "List is empty" << endl;
+	else
+	{
+		Node<T> *currPtr = ListPtr->getTail();
+		while (currPtr != nullptr)
+		{
+			itemCount++;
+			foo << itemCount << ". " << currPtr->value << endl;
+			currPtr = currPtr->next;
+		}
+	}
+	return foo;
+}

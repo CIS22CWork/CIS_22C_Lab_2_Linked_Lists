@@ -17,7 +17,7 @@ and only expose them.
 #include "List.h"
 
 template <class T>
-class Stack : public List<T>
+class Stack : protected List<T>
 {
 public:
 	//******************************************************
@@ -80,6 +80,11 @@ public:
 	{
 		return getValue (size () - 1);
 	}
+	//******************************************************
+	// operator<<        
+	//******************************************************
+	template <class T>
+	friend std::ostream& operator<< (std::ostream &foo, Stack<T> *ListPtr);
 };
 
 #endif
