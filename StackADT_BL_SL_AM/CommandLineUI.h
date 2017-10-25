@@ -19,11 +19,13 @@ private:
 public:
 	CommandLineUI (Stack<int> *stackObjInt, Stack<std::string> *stackObjString, Stack<Currency> *stackObjCurrency);
 	void enterLoop ();
-	void intStackDemo ();
-	void intStackEmpty ();
-	void stringStackDemo ();
-	void stringStackEmpty ();
+	void intStackPush ();
+	void intStackPop ();
+	void intStackClear ();
+	void stringStackPush ();
+	void stringStackPop ();
+	void stringStackClear ();
 	void currencyStackPush ();
 	void currencyStackPop ();
-	void currencyStackEmpty ();
+	void currencyStackClear ();
 };

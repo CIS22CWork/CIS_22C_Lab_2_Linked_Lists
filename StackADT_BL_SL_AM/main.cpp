@@ -25,7 +25,7 @@ using namespace std;
 int main ()
 {
 	/* initialize random seed: */
-	srand (time (NULL));
+	srand ((int)time (NULL));
 	Stack<int> stackInt;
 	Stack<string> stackString;
 	Stack<Currency> stackCurrency;

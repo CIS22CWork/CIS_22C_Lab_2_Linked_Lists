@@ -25,35 +25,34 @@ That is a declaration, not a class!!!
 template <class T>
 class List
 {
-protected:
+private:
 	Node<T> *head;
 	Node<T> *tail;
 	int itemCount;
-public:
-	//Constructor
-	List ()
+protected:
+	//******************************************************
+	// empty        
+	//
+	// Returns whether the list container is empty
+	//******************************************************
+	bool empty ()
 	{
-		head = nullptr;
-		tail = nullptr;
-		itemCount = 0;
-	}
-
-	////////// THIS SHOULD ALL BE PRIVATE //////////////
-	////////////////////////////////////////////////////
-
-	/** Sees whether the list is empty.
-	@return True if the list is empty, or false if not. */
-	bool isEmpty ()
-	{
-		if (!tail)
-		{
-			return true;
-		}
+		if (itemCount == 0) return true;
 		return false;
 	}
 
 	//******************************************************
-	// add             
+	// size         
+	//
+	// Returns the number of elements in the list container.
+	//******************************************************
+	int size () const
+	{
+		return itemCount;
+	}
+
+	//******************************************************
+	// push_back             
 	//
 	// posts to the end of the list. If successful, newEntry 
 	// is stored in the list and the count of items in the 
@@ -61,7 +60,7 @@ public:
 	// param newEntry The object to be added as a new entry.
 	// return True if addition was successful, or false if not.    
 	//******************************************************
-	bool add (T newEntry)
+	bool push_back (T newEntry)
 	{
 		Node<T> *newNode;
 		Node<T> *currentNode;
@@ -69,11 +68,11 @@ public:
 
 		newNode = new Node<T> (newEntry);
 
-		itemCount++;
-		if (isEmpty ())
+		if (empty ())
 		{
 			tail = newNode;
 			head = tail;
+			itemCount++;
 		}
 		else
 		{
@@ -84,19 +83,19 @@ public:
 
 			currentNode->next = newNode;
 			head = currentNode->next;
+			itemCount++;
 		}
 		return returnStatus;
 	}
-
 	//******************************************************
-	// removeByIndex           
+	// erase          
 	//
 	// removes an entry at the defined index
 	// index 0=tail, SIZE-1=head 
 	// list count decremented by 1 if successful.
 	// returns true if addition was successful, or false if not.    
 	//******************************************************
-	bool removeByIndex (int indexRemove)
+	bool erase (int indexRemove)
 	{
 		Node<T> *currentNode;
 		Node<T> *prevNode;
@@ -150,16 +149,14 @@ public:
 		}
 		return returnStatus;
 	}
-
-
 	//******************************************************
-	// removeByValue          
+	// remove         
 	//
 	// removes all entries with the same value
-	// list count decremented by 1 if successful.
-	// returns true if addition was successful, or false if not.    
+	// list count decremented by entries removed if successful.
+	// returns true if removal was successful, or false if not.    
 	//******************************************************
-	bool removeByValue (T anEntry)
+	bool remove (T anEntry)
 	{
 		Node<T> *currentNode;
 		Node<T> *prevNode;
@@ -203,57 +200,24 @@ public:
 		}
 		return returnStatus;
 	}
-
 	//******************************************************
-	// getFrequencyOf         
-	//
-	// Counts the number of times a given entry appears in list.
-	// param anEntry  The entry to be counted.
-	// return  The number of times anEntry appears in the list.
-	//******************************************************
-	int getFrequencyOf () const
-	{
-		return itemCount;
-	}
-
-	//******************************************************
-	// contains           
+	// find         
 	//
 	// Tests whether this list contains a given entry.
 	// param anEntry  The entry to locate.
 	// return  True if list contains anEntry, or false otherwise.
 	//******************************************************
-	bool contains (T anEntry)
+	bool find (T anEntry)
 	{
 		Node<T> *currentNode;
-
 		currentNode = tail;
-
-
 		while (currentNode)
 		{
-			if (currentNode->value == anEntry)
-			{
-				return true;
-			}
-			else
-			{
-				currentNode = currentNode->next;
-			}
+			if (currentNode->value == anEntry) return true;
+			else currentNode = currentNode->next;
 		}
 		return false;
 	}
-
-	//******************************************************
-	// getCount           
-	//
-	// returns the list item count.
-	//******************************************************
-	int getCount ()
-	{
-		return itemCount;
-	}
-
 	//******************************************************
 	// getValue           
 	//
@@ -285,82 +249,60 @@ public:
 		}
 		return returnValue;
 	}
-
 	//******************************************************
-	// empty          
+	// clear          
 	//
-	// returns the value of the list node index.
+	// Removes all elements from the list container
+	// and leaving the container with a size of 0.
 	//******************************************************
-	bool empty ()
+	void clear ()
 	{
 		Node<T> *currentNode;
-		Node<T> *prevNode;
-		bool returnStatus = false;
-
-		currentNode = tail;
-		prevNode = nullptr;
-
-		if (0 < itemCount)
-		{
-			// loop starts from tail and moves towards head.
-			for (int i = 0; i < itemCount; i++)
-			{
-				prevNode = currentNode;
-				if (i == 0)
-				{
-					// delete first
-					tail = nullptr;
-				}
-				else if (i < itemCount - 1)
-				{
-					// next
-					currentNode = currentNode->next;
-					prevNode->next = nullptr;
-					delete prevNode;
-				}
-				else
-				{
-					// delete last
-					head = nullptr;
-					returnStatus = true;
-					//delete currentNode;
-				}
-			}
-			itemCount = 0;
-		}
-		return returnStatus;
-	}
-
-	//******************************************************
-	// Destructor          
-	//
-	// Removes all entries from this list.
-	// post  List contains no items, and the count of items is 0.
-	//******************************************************
-	~List ()
-	{
-		Node<T> *currentNode;
+		Node<T> *deletedNode;
 		Node<T> *nextNode;
 
-		currentNode = head;
-
-		while (currentNode != nullptr)
+		if (!empty())
 		{
-			nextNode = currentNode->next;
-			delete currentNode;
-			currentNode = nextNode;
+			currentNode = head;
+			while (currentNode)
+			{
+				nextNode = currentNode->next;
+				deletedNode = currentNode;
+				currentNode = nextNode;
+				delete deletedNode;
+			}
 		}
+		itemCount = 0;
 	}
+	//******************************************************
+	// getTail        
+	//
+	// returns tail node
+	//******************************************************
+	Node<T>* getTail ()
+	{
+		return tail;
+	}
+
+public:
+	//******************************************************
+	// Default Constructor        
+	//******************************************************
+	List ()
+	{
+		head = nullptr;
+		tail = nullptr;
+		itemCount = 0;
+	}
+	//******************************************************
+	// Destructor          
+	//******************************************************
+	virtual ~List () { clear (); }
 
 	//******************************************************
 	// operator<<        
 	//******************************************************
 	template <class T>
 	friend std::ostream& operator<< (std::ostream &foo, List<T> *ListPtr);
-
-	Node<T>* getTail ()
-	{
-		return tail;
-	}
 };
 #endif

@@ -7,8 +7,8 @@ Lab 2
 Used Microsoft Visual Studio 2017
 
 Stack
-A Stack ADT derived from a singly linked list which will implement 
-the most common Stack operations like push, pop, isempty etc. 
+A Stack ADT derived from a singly linked list which will implement
+the most common Stack operations like push, pop, isempty etc.
 and only expose them.
 */
 
@@ -20,10 +20,14 @@ template <class T>
 class Stack : public List<T>
 {
 public:
-	Stack ()
-	{
-
-	}
+	//******************************************************
+	// Default Constructor        
+	//******************************************************
+	Stack () { List (); }
+	//******************************************************
+	// Destructor          
+	//******************************************************
+	~Stack () { clear (); }
 
 	//******************************************************
 	// pop        
@@ -32,7 +36,7 @@ public:
 	//******************************************************
 	bool pop ()
 	{
-		return removeByIndex (getCount () - 1);
+		return erase (size () - 1);
 	}
 
 	//******************************************************
@@ -42,28 +46,30 @@ public:
 	//******************************************************
 	bool push (T newEntry)
 	{
-		return add (newEntry);
+		return push_back (newEntry);
 	}
 
 	//******************************************************
-	// isempty        
+	// empty        
 	//
 	// checks whether the underlying container is empty     
 	//******************************************************
-	bool isempty ()
-	{
-		return isEmpty ()
-	}
+	bool empty () { return List::empty (); }
 
 	//******************************************************
 	// size         
 	//
 	// returns the number of elements     
 	//******************************************************
-	int size ()
-	{
-		return getCount ();
-	}
+	int size () { return List::size (); }
+
+	//******************************************************
+	// clear          
+	//
+	// Removes all elements from the list container
+	// and leaving the container with a size of 0.
+	//******************************************************
+	void clear () { List::clear (); }
 
 	//******************************************************
 	// top        
@@ -72,7 +78,7 @@ public:
 	//******************************************************
 	T top ()
 	{
-		return getValue(getCount () - 1);
+		return getValue (size () - 1);
 	}
 };
 

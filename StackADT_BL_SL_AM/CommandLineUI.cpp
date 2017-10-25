@@ -38,123 +38,149 @@ void CommandLineUI::enterLoop ()
 	while (loopActive)
 	{
 		cout << "Please enter the number representing the menu options below:" << endl
-			<< "1. Random integers in a linked list" << endl
-			<< "2. Empty integers from stack" << endl
-			<< "3. Open \"ExampleStrings.txt\" and examine strings." << endl
-			<< "4. Empty strings from stack" << endl
-			<< "5. Push a currency" << endl
-			<< "6. Pop a currency" << endl
-			<< "7. Empty currencys from the stack" << endl
-			<< "8. Exit Application" << endl << endl
+			<< "1. Push random integers to the integer type stack" << endl
+			<< "2. Pop from the integer type stack" << endl
+			<< "3. Clear the integer type stack" << endl
+			<< "4. Push \"ExampleStrings.txt\" to the string type stack." << endl
+			<< "5. Pop from the string type stack" << endl
+			<< "6. Clear the string type stack" << endl
+			<< "7. Push a random Currency to the currency type stack" << endl
+			<< "8. Pop from the Currency type stack" << endl
+			<< "9. Clear the Currency type stack" << endl
+			<< "10. Exit Application" << endl << endl
 			<< "Selection Number: ";
 		// there is a bug that when you enter "test,2,3,hey" in the menu selection. 
 		// The program gets stuck in an infinite loop
 		cin >> menuOption;
-		cout << endl;
-		if (menuOption < 1 || menuOption > 8)
+		if (cin.fail ())
 		{
-			cout << "Your selection was not valid. Please try again. ";
+			cin.clear (); // clears failure state
+			cin.ignore (std::numeric_limits<std::streamsize>::max (), '\n'); // discards "bad" characters
+			menuOption = 0;
+		}
+		cout << endl;
+		if (menuOption < 1 || menuOption > 10)
+		{
+			cout << "************************************" << endl;
+			cout << "Your selection was not valid. Please try again." << endl;
+			cout << "************************************" << endl << endl;
 		}
 		else
 		{
 			/* please keep each sub-menu in a separate function to increase readability and prevent
 			a huge blob of unorganized code. */
-			if (menuOption == 1) intStackDemo ();
-			else if (menuOption == 2) intStackEmpty ();
-			else if (menuOption == 3) stringStackDemo ();
-			else if (menuOption == 4) stringStackEmpty ();
-			else if (menuOption == 5) currencyStackPush ();
-			else if (menuOption == 6) currencyStackPop ();
-			else if (menuOption == 7) currencyStackEmpty ();
-			else if (menuOption == 8) loopActive = false;
+			if (menuOption == 1) intStackPush ();
+			else if (menuOption == 2) intStackPop ();
+			else if (menuOption == 3) intStackClear ();
+			else if (menuOption == 4) stringStackPush ();
+			else if (menuOption == 5) stringStackPop ();
+			else if (menuOption == 6) stringStackClear ();
+			else if (menuOption == 7) currencyStackPush ();
+			else if (menuOption == 8) currencyStackPop ();
+			else if (menuOption == 9) currencyStackClear ();
+			else if (menuOption == 10) loopActive = false;
 		}
 	}
 }
 
 //******************************************************
-// intStackDemo   
+// CommandLineUI::intStackPush   
 //      
-// This is an example of the method documentation
+// This is an example of the stack push method
 //******************************************************
-void CommandLineUI::intStackDemo ()
+void CommandLineUI::intStackPush ()
 {
 	int intRandom = rand () % 99999;
 	stackInt->push (intRandom);
-	cout << stackInt << endl << endl;
+	cout << "integer stack items:" << endl << stackInt << endl << endl;
 }
 
 //******************************************************
-// intStackEmpty        
+// CommandLineUI::intStackPop         
 //      
+// This is an example of the stack pop method
 //******************************************************
-void CommandLineUI::intStackEmpty ()
+void CommandLineUI::intStackPop ()
 {
-	stackInt->empty ();
-	cout << stackInt << endl << endl;
+	if (stackInt->empty ())
+	{
+		cout << "************************************" << endl;
+		cout << "Stack is empty! Underflow Condition!" << endl;
+		cout << "************************************" << endl << endl;
+	}
+	else
+	{
+		stackInt->pop ();
+		cout << "integer stack items:" << endl << stackInt << endl << endl;
+	}
 }
 
 //******************************************************
-// stringStackDemo     
+// CommandLineUI::intStackClear         
 //      
-// This is an example of the method documentation
+// This is an example of the list clear method
 //******************************************************
-void CommandLineUI::stringStackDemo ()
+void CommandLineUI::intStackClear ()
+{
+	stackInt->clear ();
+	cout << "integer stack items:" << endl << stackInt << endl << endl;
+}
+
+//******************************************************
+// CommandLineUI::stringStackPush
+//      
+// This is an example of the stack push method
+//******************************************************
+void CommandLineUI::stringStackPush ()
 {
 	string buffer;
 	ifstream read_input_file ("ExampleStrings.txt");
 
-	string repeat_response;
-	string response;
-	string itemName;
-	cout << "Building the linked list of strings:" << endl;
+	cout << "Pushing \"ExampleStrings.txt\" contents to stack:" << endl;
 	while (true)
 	{
 		read_input_file >> buffer;
 		if (!read_input_file) break;
 		stackString->push (buffer);
 	}
-	cout << "Do you want to display the list?" << endl;
-	cin >> response;
-	if (response == "Yes" || response == "yes")
-	{
-		cout << stackString;
-	}
-	cout << "Do you want to remove an item?" << endl;
-	cin >> response;
-	if (response == "Yes" || response == "yes")
-	{
-		cout << "Enter the item name" << endl;
-		cin >> itemName;
-		if (stackString->contains (itemName))
-		{
-			cout << "Your response " << itemName << " is here.\n";
-			cout << "Preparing to remove. Stand by..." << endl;
-			stackString->removeByValue (itemName);
-			cout << "Item Count is now " << stackString->getFrequencyOf () << " nodes." << endl;
-		}
-		else
-		{
-			cout << "ERROR! Your response " << itemName << " is not in the list." << endl;
-		}
-
-	}
-	cout << "All done!" << endl << endl;
+	cout << "string stack items:" << endl << stackString << endl << endl;
 }
 
 //******************************************************
-// stringStackEmpty     
+// CommandLineUI::stringStackPop        
 //      
+// This is an example of the stack pop method
 //******************************************************
-void CommandLineUI::stringStackEmpty ()
+void CommandLineUI::stringStackPop ()
 {
-	stackString->empty ();
-	cout << stackString << endl << endl;
+	if (stackString->empty ())
+	{
+		cout << "************************************" << endl;
+		cout << "Stack is empty! Underflow Condition!" << endl;
+		cout << "************************************" << endl << endl;
+	}
+	else
+	{
+		stackString->pop ();
+		cout << "string stack items:" << endl << stackString << endl << endl;
+	}
 }
 
 //******************************************************
-// currencyStackPush      
+// CommandLineUI::stringStackClear         
 //      
-// This is an example of the method documentation
+// This is an example of the list clear method
+//******************************************************
+void CommandLineUI::stringStackClear ()
+{
+	stackString->clear ();
+	cout << "string stack items:" << endl << stackString << endl << endl;
+}
+
+//******************************************************
+// CommandLineUI::currencyStackPush
+//      
+// This is an example of the stack push method
 //******************************************************
 void CommandLineUI::currencyStackPush ()
 {
@@ -166,16 +192,17 @@ void CommandLineUI::currencyStackPush ()
 	else if (intRandom == 2) stackCurrency->push (CurrencyRupee (rand () % 100, rand () % 99));
 	else if (intRandom == 3) stackCurrency->push (CurrencyYen (rand () % 100, rand () % 99));
 	else if (intRandom == 4) stackCurrency->push (CurrencyYuan (rand () % 100, rand () % 99));
-	cout << stackCurrency << endl << endl;
+	cout << "Currency stack items:" << endl << stackCurrency << endl << endl;
 }
 
 //******************************************************
-// currencyStackPop         
+// CommandLineUI::currencyStackPop      
 //      
+// This is an example of the stack pop method
 //******************************************************
 void CommandLineUI::currencyStackPop ()
 {
-	if (stackCurrency->isEmpty())
+	if (stackCurrency->empty ())
 	{
 		cout << "************************************" << endl;
 		cout << "Stack is empty! Underflow Condition!" << endl;
@@ -184,18 +211,19 @@ void CommandLineUI::currencyStackPop ()
 	else
 	{
 		stackCurrency->pop();
-		cout << stackCurrency << endl << endl;
+		cout << "Currency stack items:" << endl << stackCurrency << endl << endl;
 	}
 }
 
 //******************************************************
-// currencyStackEmpty      
+// CommandLineUI::currencyStackClear         
 //      
+// This is an example of the list clear method
 //******************************************************
-void CommandLineUI::currencyStackEmpty ()
+void CommandLineUI::currencyStackClear ()
 {
-	stackCurrency->empty ();
-	cout << stackCurrency << endl << endl;
+	stackCurrency->clear ();
+	cout << "Currency stack items:" << endl << stackCurrency << endl << endl;
 }
 
 //******************************************************
@@ -207,12 +235,16 @@ std::ostream& operator<< (std::ostream &foo, List<T> *ListPtr)
 	// Since operator<< is a friend of the List class, we can access
 	// it's members directly.
 	int itemCount = 0;
-	Node<T> *currPtr = ListPtr->getTail ();
-	while (currPtr != nullptr)
+	if (ListPtr->empty ()) cout << "List is empty" << endl;
+	else
 	{
-		itemCount++;
-		foo << itemCount << ". " << currPtr->value << endl;
-		currPtr = currPtr->next;
+		Node<T> *currPtr = ListPtr->getTail ();
+		while (currPtr != nullptr)
+		{
+			itemCount++;
+			foo << itemCount << ". " << currPtr->value << endl;
+			currPtr = currPtr->next;
+		}
 	}
 	return foo;
 }
