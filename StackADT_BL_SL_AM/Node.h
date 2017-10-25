@@ -28,5 +28,10 @@ public:
 		value = nodeValue;
 		next = nullptr;
 	}
+
+	~Node ()
+	{
+		next = nullptr;
+	}
 };
 #endif

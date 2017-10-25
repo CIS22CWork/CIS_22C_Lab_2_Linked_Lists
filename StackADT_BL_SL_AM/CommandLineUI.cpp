@@ -90,11 +90,8 @@ void CommandLineUI::enterLoop ()
 //******************************************************
 void CommandLineUI::intStackPush ()
 {
-	for (int i=0;i<10000;i++)
-	{
-		int intRandom = rand () % 99999;
-		stackInt->push (intRandom);
-	}
+	int intRandom = rand () % 99999;
+	stackInt->push (intRandom);
 	int intRandom = rand () % 99999;
 	stackInt->push (intRandom);
 	cout << "integer stack items:" << endl << stackInt << endl << endl;
@@ -216,7 +213,7 @@ void CommandLineUI::currencyStackPop ()
 	}
 	else
 	{
-		stackCurrency->pop();
+		stackCurrency->pop ();
 		cout << "Currency stack items:" << endl << stackCurrency << endl << endl;
 	}
 }
@@ -260,10 +257,10 @@ std::ostream& operator<< (std::ostream &foo, Stack<T> *ListPtr)
 	// Since operator<< is a friend of the List class, we can access
 	// it's members directly.
 	int itemCount = 0;
-	if (ListPtr->empty()) cout << "List is empty" << endl;
+	if (ListPtr->empty ()) cout << "List is empty" << endl;
 	else
 	{
-		Node<T> *currPtr = ListPtr->getTail();
+		Node<T> *currPtr = ListPtr->getTail ();
 		while (currPtr != nullptr)
 		{
 			itemCount++;
