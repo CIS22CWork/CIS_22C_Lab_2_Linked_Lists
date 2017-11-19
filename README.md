@@ -1,6 +1,6 @@
 # Instructions
-This assignment was locked Nov 6 at 3:30pm.__
-All the instructions related to working in Teams as explained in Lab 2 apply here.__
+This assignment was locked Nov 6 at 3:30pm.<br />
+All the instructions related to working in Teams as explained in Lab 2 apply here.<br />
 
  
 
