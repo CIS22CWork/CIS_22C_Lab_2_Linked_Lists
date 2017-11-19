@@ -14,10 +14,10 @@ This assignment was locked Nov 6 at 3:30pm.
 <br />Finally, implement a Queue ADT based on your singly linked list which will implement the most common Queue operations like enqueue, dequeue, front, rear, empty etc.
 <br />Ensure that your Node, List and Queue ADTs are mimimal and cohesive with adequate walls around them.  Define interfaces as needed, so you can reuse them in all your subsequent assignments.
 <br />Then write a main that will demonstrate the capabilities of you Queue ADT with different types of data - numbers, strings and your currency objects.
-<br /> 
-<br />
+
+
 <br />Grading:
-<br />
+
 <br />3 points - EXE works without a hitch
 <br />2 points - MSVC project structure, code styling, commenting
 <br />3 points - Queue template which only exposes Queue related behaviors.
