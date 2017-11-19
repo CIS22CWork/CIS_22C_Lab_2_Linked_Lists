@@ -1,5 +1,5 @@
 # Instructions
-<br />This assignment was locked Nov 6 at 3:30pm.
+This assignment was locked Nov 6 at 3:30pm.
 <br />All the instructions related to working in Teams as explained in Lab 2 apply here.
 
  
@@ -27,7 +27,7 @@
 <br />As already explained, this assignment should be done in Visual Studio or properly changed into a Visual Studio format before submitting.  Include your entire VS folder structure zipped as attachment to this question.  The exe should work on its own before the coding will be graded.  Also, include screenshots of the output.  Remember to name your project and zip file name as QueueADT_initial_1_initial2.  Add the team member names in the response box of the question for the answer to be accepted.
 
 # Outcome
-<br />-2 using inline definitions in template methods despite warnings
+-2 using inline definitions in template methods despite warnings
 <br />Other things noted but no penalty:
 <br />a. Your VS code structure is non-standard
 <br />b. Your implementation of stack using push_back is counter intuitive and it shows up in the UI when you print the stack as the stack grows downward, instead of upward.
