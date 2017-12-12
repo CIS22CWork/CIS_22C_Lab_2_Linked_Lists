@@ -1,3 +1,8 @@
+De Anza College<BR>
+Manish Goel<BR>
+Fall 2017<BR>
+CIS22C Data Abstract & Structures<BR>
+
 # Instructions
 This assignment was locked Nov 1 at 3:30pm.
 <br />This should be done in HW pairs.  Each person should submit their own copy of the same program.  You will also need to grade your partner's effort on a scale of 1:5 where 1 means you did all the work and 5 means your partner did all the work.
